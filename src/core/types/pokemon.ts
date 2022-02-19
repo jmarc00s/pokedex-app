@@ -6,11 +6,14 @@ export type PokemonType =
   | 'Bug'
   | 'Electric'
   | 'Ground'
-  | 'Normal';
+  | 'Normal'
+  | 'Fairy'
+  | 'Flying';
 export interface Pokemon {
   id: number;
   name: string;
   type: PokemonType;
+  type_2: PokemonType;
   total: number;
   hp: number;
   attack: number;

@@ -17,7 +17,10 @@ const PokemonCard = ({ pokemon }: PokemonCardProps) => {
         alt="pokemon"
       />
       <p className="text-center font-semibold mb-2">{pokemon.name}</p>
-      <PokemonTypeTag type={pokemon.type} />
+      <div className="flex gap-1">
+        <PokemonTypeTag type={pokemon.type} />
+        {pokemon.type_2?.length > 0 && <PokemonTypeTag type={pokemon.type_2} />}
+      </div>
     </div>
   );
 };

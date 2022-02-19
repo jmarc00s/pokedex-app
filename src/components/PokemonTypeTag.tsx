@@ -16,6 +16,8 @@ const PokemonTypeTag = ({ type }: PokemonTypeTagProps) => {
     'bg-purple-500 text-gray-50': type === 'Poison',
     'bg-gray-400 text-gray-50': type === 'Normal',
     'bg-zinc-500 text-gray-50': type === 'Bug',
+    'bg-fuchsia-500 text-gray-50': type === 'Fairy',
+    'bg-teal-500 text-gray-50': type === 'Flying',
   };
 
   return (
