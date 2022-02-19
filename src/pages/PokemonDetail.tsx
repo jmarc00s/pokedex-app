@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, useMatch } from 'react-location';
-import { LocationGenerics } from '../App';
 import PokemonCard from '../components/PokemonCard';
 import PokemonTable from '../components/PokemonTable';
+import { LocationGenerics } from '../core/config/routes';
 
 const PokemonDetail = () => {
   const {
