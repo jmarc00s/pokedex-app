@@ -17,7 +17,7 @@ const Home = () => {
         </h6>
       </div>
 
-      <ul className="grid grid-cols-4 mt-10 gap-3">
+      <ul className="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 items-center justify-center mt-10 gap-3">
         {pokemons?.map((pokemon, index) => (
           <li key={index}>
             <PokemonCard pokemon={pokemon} />
