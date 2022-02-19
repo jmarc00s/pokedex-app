@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://pokeapi.co/api/v2';
+axios.defaults.baseURL = 'http://localhost:4000';
 
 export const api = axios;

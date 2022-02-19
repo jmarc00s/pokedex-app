@@ -1,16 +1,31 @@
-import { Outlet, ReactLocation, Route, Router, useMatch } from 'react-location';
+import {
+  MakeGenerics,
+  Outlet,
+  ReactLocation,
+  Route,
+  Router,
+} from 'react-location';
 import Home from './pages/Home';
 import PokemonDetail from './pages/PokemonDetail';
 import { api } from './core/services/api';
-import { useEffect } from 'react';
+import { PokemonType } from './core/types/pokemon';
+
+export type LocationGenerics = MakeGenerics<{
+  LoaderData: {
+    pokemons: PokemonType[];
+  };
+}>;
 
 const routes: Route[] = [
   {
     path: '/',
     element: <Home />,
-    loader: async () => ({
-      pokemons: await api('pokemon'),
-    }),
+    loader: async () => {
+      const { data } = await api('pokemons?_page=1&_limit=40');
+      return {
+        pokemons: data,
+      };
+    },
   },
   {
     path: '/details/:pokemonId',
@@ -18,12 +33,12 @@ const routes: Route[] = [
   },
 ];
 
-const location = new ReactLocation();
+const location = new ReactLocation<LocationGenerics>();
 
 function App() {
   return (
     <Router location={location} routes={routes}>
-      <main className="container flex flex-col p-8">
+      <main className="container mx-auto pt-8">
         <Outlet />
       </main>
     </Router>
