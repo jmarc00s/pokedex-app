@@ -19,7 +19,7 @@ const PokemonDetail = () => {
         </Link>
       </div>
       {pokemon && (
-        <div className="flex justify-center w-full gap-10">
+        <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start w-full gap-10">
           <PokemonCard pokemon={pokemon} size="large" />
           <PokemonTable pokemon={pokemon} />
         </div>
