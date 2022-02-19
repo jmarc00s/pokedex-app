@@ -7,7 +7,7 @@ interface PokemonCardProps {
 
 const PokemonCard = ({ pokemon }: PokemonCardProps) => {
   return (
-    <div className="h-64 w-64 rounded shadow flex flex-col items-center justify-center p-2 cursor-pointer text-gray-800 bg-white">
+    <div className="h-64 w-64 rounded shadow flex flex-col items-center justify-center p-2 text-gray-800 bg-white">
       <img
         height={120}
         width={120}

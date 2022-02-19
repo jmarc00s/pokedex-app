@@ -32,9 +32,9 @@ const routes: Route[] = [
     path: '/details/:pokemonId',
     element: <PokemonDetail />,
     loader: async ({ params }) => {
-      const { data: pokemon } = await api(`pokemons?id=${params.pokemonId}`);
+      const { data } = await api(`pokemons?id=${params.pokemonId}`);
       return {
-        pokemon,
+        pokemon: data[0],
       };
     },
   },
