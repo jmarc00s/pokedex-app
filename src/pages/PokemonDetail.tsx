@@ -8,7 +8,6 @@ const PokemonDetail = () => {
   const {
     data: { pokemon },
   } = useMatch<LocationGenerics>();
-  console.log(pokemon);
 
   return (
     <section className="h-screen">

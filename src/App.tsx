@@ -6,7 +6,7 @@ import {
   Router,
 } from 'react-location';
 import Home from './pages/Home';
-import PokemonDetail from './pages/PokemonDetail';
+
 import { api } from './core/services/api';
 import { Pokemon } from './core/types/pokemon';
 
@@ -30,7 +30,8 @@ const routes: Route[] = [
   },
   {
     path: '/details/:pokemonId',
-    element: <PokemonDetail />,
+    element: () =>
+      import('./pages/PokemonDetail').then((module) => <module.default />),
     loader: async ({ params }) => {
       const { data } = await api(`pokemons?id=${params.pokemonId}`);
       return {
