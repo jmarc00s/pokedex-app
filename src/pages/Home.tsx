@@ -1,5 +1,5 @@
 import React from 'react';
-import { useMatch } from 'react-location';
+import { Link, useMatch } from 'react-location';
 import { LocationGenerics } from '../App';
 import PokemonCard from '../components/PokemonCard';
 
@@ -20,7 +20,9 @@ const Home = () => {
       <ul className="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 items-center justify-center mt-10 gap-3">
         {pokemons?.map((pokemon, index) => (
           <li key={index}>
-            <PokemonCard pokemon={pokemon} />
+            <Link to={`/details/${pokemon.id}`}>
+              <PokemonCard pokemon={pokemon} />
+            </Link>
           </li>
         ))}
       </ul>

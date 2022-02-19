@@ -13,6 +13,7 @@ import { Pokemon } from './core/types/pokemon';
 export type LocationGenerics = MakeGenerics<{
   LoaderData: {
     pokemons: Pokemon[];
+    pokemon: Pokemon;
   };
 }>;
 
@@ -30,6 +31,12 @@ const routes: Route[] = [
   {
     path: '/details/:pokemonId',
     element: <PokemonDetail />,
+    loader: async ({ params }) => {
+      const { data: pokemon } = await api(`pokemons?id=${params.pokemonId}`);
+      return {
+        pokemon,
+      };
+    },
   },
 ];
 

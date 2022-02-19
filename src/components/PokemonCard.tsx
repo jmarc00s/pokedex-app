@@ -1,4 +1,3 @@
-import React from 'react';
 import { Pokemon } from '../core/types/pokemon';
 import PokemonTypeTag from './PokemonTypeTag';
 
