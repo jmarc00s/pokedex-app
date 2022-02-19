@@ -11,7 +11,7 @@ const PokemonDetail = () => {
   console.log(pokemon);
 
   return (
-    <section>
+    <section className="h-screen">
       <div className="text-center">
         <h1 className="text-3xl font-bold">Detalhes</h1>
         <Link to="/">
@@ -19,13 +19,9 @@ const PokemonDetail = () => {
         </Link>
       </div>
       {pokemon && (
-        <div className="flex w-full">
-          <div className="flex-1">
-            <PokemonCard pokemon={pokemon} />
-          </div>
-          <div className="flex-1">
-            <PokemonTable pokemon={pokemon} />
-          </div>
+        <div className="flex justify-center w-full gap-10">
+          <PokemonCard pokemon={pokemon} size="large" />
+          <PokemonTable pokemon={pokemon} />
         </div>
       )}
     </section>
