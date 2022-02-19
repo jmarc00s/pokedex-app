@@ -1,7 +1,16 @@
-export interface PokemonType {
+export type PokemonType =
+  | 'Grass'
+  | 'Fire'
+  | 'Water'
+  | 'Poison'
+  | 'Bug'
+  | 'Electric'
+  | 'Ground'
+  | 'Normal';
+export interface Pokemon {
   id: number;
   name: string;
-  type: string;
+  type: PokemonType;
   total: number;
   hp: number;
   attack: number;

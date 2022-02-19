@@ -8,11 +8,11 @@ import {
 import Home from './pages/Home';
 import PokemonDetail from './pages/PokemonDetail';
 import { api } from './core/services/api';
-import { PokemonType } from './core/types/pokemon';
+import { Pokemon } from './core/types/pokemon';
 
 export type LocationGenerics = MakeGenerics<{
   LoaderData: {
-    pokemons: PokemonType[];
+    pokemons: Pokemon[];
   };
 }>;
 
@@ -38,8 +38,10 @@ const location = new ReactLocation<LocationGenerics>();
 function App() {
   return (
     <Router location={location} routes={routes}>
-      <main className="container mx-auto pt-8">
-        <Outlet />
+      <main className=" bg-gray-50">
+        <section className="container mx-auto pt-8">
+          <Outlet />
+        </section>
       </main>
     </Router>
   );
