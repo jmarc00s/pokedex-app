@@ -3,7 +3,7 @@ import { Link, useMatch } from 'react-location';
 import { useQuery } from 'react-query';
 import PokemonCard from '../components/PokemonCard';
 import PokemonTable from '../components/PokemonTable';
-import { LocationGenerics } from '../core/config/routes';
+import { usePokemon } from '../core/config/query';
 import { getPokemonById } from '../core/services/api';
 
 const PokemonDetail = () => {
@@ -11,9 +11,7 @@ const PokemonDetail = () => {
     params: { pokemonId },
   } = useMatch();
 
-  const { data: pokemon, isLoading } = useQuery(['pokemon', pokemonId], () =>
-    getPokemonById(Number(pokemonId))
-  );
+  const { data: pokemon, isLoading } = usePokemon(Number(pokemonId));
 
   if (isLoading) {
     return <p>Carregando detalhes...</p>;
