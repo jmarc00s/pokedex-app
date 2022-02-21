@@ -1,22 +1,20 @@
-import React, { useState } from 'react';
-import { Link } from 'react-location';
+import React, { useEffect, useState } from 'react';
+import { Link, useSearch } from 'react-location';
 import Button from '../components/Button';
 import PokemonCard from '../components/PokemonCard';
 import { usePokemons } from '../core/config/query';
+import useApp from '../core/hooks/useApp';
 
 const Home = () => {
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(20);
-  const { data: pokemons, isLoading, refetch } = usePokemons(page, limit);
+  const { page, setPage } = useApp();
+  const { data: pokemons, isLoading } = usePokemons(page);
 
   function fetchNextPage() {
     setPage(page + 1);
-    refetch();
   }
 
   function fetchPreviousPage() {
     setPage(page - 1);
-    refetch();
   }
 
   return (

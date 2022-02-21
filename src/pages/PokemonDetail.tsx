@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link, useMatch } from 'react-location';
-import { useQuery } from 'react-query';
+import { Link, useMatch, useSearch } from 'react-location';
 import PokemonCard from '../components/PokemonCard';
 import PokemonTable from '../components/PokemonTable';
 import { usePokemon } from '../core/config/query';
-import { getPokemonById } from '../core/services/api';
 
 const PokemonDetail = () => {
   const {
