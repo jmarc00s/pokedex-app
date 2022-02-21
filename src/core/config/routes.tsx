@@ -1,6 +1,11 @@
 import { MakeGenerics, ReactLocation, Route } from 'react-location';
 import Home from '../../pages/Home';
-import { api, getPokemons } from '../services/api';
+import {
+  api,
+  getPokemonById,
+  getPokemons,
+  getPokemonsPaginated,
+} from '../services/api';
 import { Pokemon } from '../types/pokemon';
 import { queryClient } from './query';
 
@@ -15,20 +20,19 @@ export const routes: Route[] = [
   {
     path: '/',
     element: <Home />,
-    // loader: async () =>
-    //   queryClient.getQueryData('pokemons') ??
-    //   queryClient.fetchQuery('pokemons', getPokemons),
+    loader: async () =>
+      queryClient.getQueryData('pokemons') ??
+      queryClient.fetchQuery('pokemons', () => getPokemonsPaginated()),
   },
   {
     path: '/details/:pokemonId',
     element: () =>
       import('../../pages/PokemonDetail').then((module) => <module.default />),
-    loader: async ({ params }) => {
-      const { data } = await api(`pokemons?id=${params.pokemonId}`);
-      return {
-        pokemon: data[0],
-      };
-    },
+    loader: async ({ params }) =>
+      queryClient.getQueryData('pokemon') ??
+      queryClient.fetchQuery(['pokemon', params.pokemonId], () =>
+        getPokemonById(Number(params.pokemonId))
+      ),
   },
 ];
 

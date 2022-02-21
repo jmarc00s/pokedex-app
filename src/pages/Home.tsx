@@ -1,21 +1,14 @@
-import React from 'react';
-import { Link, useMatch } from 'react-location';
-import { useQuery } from 'react-query';
+import React, { useState } from 'react';
+import { Link } from 'react-location';
 import PokemonCard from '../components/PokemonCard';
-import { LocationGenerics } from '../core/config/routes';
-import { getPokemons, getPokemonsPaginated } from '../core/services/api';
-import { Pokemon } from '../core/types/pokemon';
+import { usePokemons } from '../core/config/query';
 
 const Home = () => {
-  const pokemons = useQuery<Pokemon[], any>(
-    'pokemons',
-    () => getPokemonsPaginated(),
-    {
-      cacheTime: 1 * 60 * 1000,
-    }
-  );
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(20);
+  const { data: pokemons, isLoading } = usePokemons(page, limit);
 
-  if (pokemons.isLoading) {
+  if (isLoading) {
     return <p> Carregando pokemons...</p>;
   }
 
@@ -29,7 +22,7 @@ const Home = () => {
       </div>
 
       <ul className="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 items-center justify-center mt-10 gap-3">
-        {pokemons.data?.map((pokemon, index) => (
+        {pokemons?.map((pokemon, index) => (
           <li key={index}>
             <Link to={`/details/${pokemon.id}`}>
               <PokemonCard pokemon={pokemon} />
