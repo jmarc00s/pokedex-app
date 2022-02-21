@@ -8,7 +8,10 @@ export type PokemonType =
   | 'Ground'
   | 'Normal'
   | 'Fairy'
-  | 'Flying';
+  | 'Flying'
+  | 'Dragon'
+  | 'Dark'
+  | 'Psychic';
 export interface Pokemon {
   id: number;
   name: string;
