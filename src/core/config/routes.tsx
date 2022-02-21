@@ -1,7 +1,8 @@
 import { MakeGenerics, ReactLocation, Route } from 'react-location';
 import Home from '../../pages/Home';
-import { api } from '../services/api';
+import { api, getPokemons } from '../services/api';
 import { Pokemon } from '../types/pokemon';
+import { queryClient } from './query';
 
 export type LocationGenerics = MakeGenerics<{
   LoaderData: {
@@ -14,12 +15,9 @@ export const routes: Route[] = [
   {
     path: '/',
     element: <Home />,
-    loader: async () => {
-      const { data } = await api('pokemons?_page=1&_limit=40');
-      return {
-        pokemons: data,
-      };
-    },
+    // loader: async () =>
+    //   queryClient.getQueryData('pokemons') ??
+    //   queryClient.fetchQuery('pokemons', getPokemons),
   },
   {
     path: '/details/:pokemonId',
