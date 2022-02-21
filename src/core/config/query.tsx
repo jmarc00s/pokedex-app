@@ -4,7 +4,7 @@ import { getPokemonById, getPokemonsPaginated } from '../services/api';
 export const queryClient = new QueryClient();
 
 export function usePokemons(page = 1, limit = 20) {
-  return useQuery('pokemons', () => getPokemonsPaginated(page, limit));
+  return useQuery(['pokemons', page], () => getPokemonsPaginated(page, limit));
 }
 
 export function usePokemon(pokemonId: number) {
